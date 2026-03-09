@@ -1,0 +1,234 @@
+/* Страница "Все мероприятия" */
+
+/* Секция мероприятий */
+.events-section {
+    background: #f5f7fa;
+    padding: 60px 0 80px;
+    min-height: 60vh;
+}
+
+/* Фильтр */
+.events-filter {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
+
+.dropdown {
+    position: relative;
+    width: 280px;
+}
+
+.dropdown__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 20px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dropdown__button:hover {
+    border-color: #1a5c9e;
+}
+
+.dropdown__button.active {
+    border-color: #1a5c9e;
+    box-shadow: 0 2px 8px rgba(26, 92, 158, 0.15);
+}
+
+.dropdown__selected {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #333333;
+}
+
+.dropdown__arrow {
+    width: 12px;
+    height: 12px;
+    margin-left: 12px;
+    transition: transform 0.2s;
+}
+
+.dropdown__button.active .dropdown__arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    z-index: 100;
+}
+
+.dropdown__menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown__item {
+    padding: 12px 20px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #333333;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.dropdown__item:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.dropdown__item:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+.dropdown__item:hover {
+    background: #f0f4f8;
+}
+
+.dropdown__item.active {
+    background: #1a5c9e;
+    color: #ffffff;
+}
+
+/* Сетка мероприятий */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Карточка мероприятия - идентична events__item на home.html */
+.events-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+.events-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.events-card__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: #1a5c9e;
+    flex: 1;
+    margin: 0;
+}
+
+.events-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.events-card__date {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 150%;
+    color: #666666;
+}
+
+.events-card__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #1a5c9e;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.2s;
+    flex-shrink: 0;
+}
+
+.events-card__button:hover {
+    background: #0d3a5c;
+    transform: translateX(3px);
+}
+
+.events-card__button img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+}
+
+/* Адаптация */
+@media (max-width: 1200px) {
+    .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .events-section {
+        padding: 40px 0 60px;
+    }
+
+    .events-filter {
+        justify-content: center;
+    }
+
+    .dropdown {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .events-card {
+        min-height: 180px;
+    }
+
+    .events-card__title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-card {
+        padding: 20px;
+    }
+
+    .events-card__title {
+        font-size: 14px;
+    }
+
+    .events-card__date {
+        font-size: 12px;
+    }
+}

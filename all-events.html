@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мероприятия - Международная Ассоциация «Метро»</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/all-events.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <!-- Hero секция -->
+            <section class="hero">
+                <!-- Header будет загружен через JS -->
+                <div id="header-block"></div>
+
+                <div class="hero__container container">
+                    <h1 class="hero__title">МЕРОПРИЯТИЯ</h1>
+                    <p class="hero__subtitle">Предстоящие события и мероприятия Международной Ассоциации «Метро»</p>
+                </div>
+            </section>
+
+            <!-- Фильтр и сетка мероприятий -->
+            <section class="events-section">
+                <div class="container">
+                    <!-- Фильтр -->
+                    <div class="events-filter">
+                        <div class="dropdown">
+                            <button class="dropdown__button" id="filter-button">
+                                <span class="dropdown__selected">Все мероприятия</span>
+                                <img src="img/arrow-down.svg" alt="▼" class="dropdown__arrow">
+                            </button>
+                            <div class="dropdown__menu" id="filter-menu">
+                                <div class="dropdown__item" data-filter="all">Все мероприятия</div>
+                                <div class="dropdown__item" data-filter="2026">2026 год</div>
+                                <div class="dropdown__item" data-filter="2025">2025 год</div>
+                                <div class="dropdown__item" data-filter="2024">2024 год</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Контейнер для карточек мероприятий (заполняется через JS) -->
+                    <div class="events-grid" id="events-grid"></div>
+                </div>
+            </section>
+
+            <!-- Footer будет загружен через JS -->
+            <div id="footer-block"></div>
+        </div>
+    </div>
+    <script src="js/all-events.js"></script>
+    <script src="js/header.js"></script>
+</body>
+</html>

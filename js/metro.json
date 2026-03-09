@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "name": "Петербургский метрополитен",
+        "image": "img/metro1.svg",
+        "url": "piter-metro.html"
+    },
+    {
+        "id": 2,
+        "name": "Московский метрополитен",
+        "image": "img/metro2.svg",
+        "url": "#"
+    },
+    {
+        "id": 3,
+        "name": "Бакинский метрополитен",
+        "image": "img/metro3.svg",
+        "url": "#"
+    },
+    {
+        "id": 4,
+        "name": "Ташкентский метрополитен",
+        "image": "img/metro4.svg",
+        "url": "#"
+    },
+    {
+        "id": 5,
+        "name": "Ереванский метрополитен",
+        "image": "img/metro5.svg",
+        "url": "#"
+    },
+    {
+        "id": 6,
+        "name": "Минский метрополитен",
+        "image": "img/metro6.svg",
+        "url": "#"
+    },
+    {
+        "id": 7,
+        "name": "Нижегородский метрополитен",
+        "image": "img/metro7.svg",
+        "url": "#"
+    },
+    {
+        "id": 8,
+        "name": "Екатеринбургский метрополитен",
+        "image": "img/metro8.svg",
+        "url": "#"
+    },
+    {
+        "id": 9,
+        "name": "«Метроэлектротранс» г. Казань",
+        "image": "img/metro1.svg",
+        "url": "#"
+    },
+    {
+        "id": 10,
+        "name": "Новосибирский метрополитен",
+        "image": "img/metro2.svg",
+        "url": "#"
+    },
+    {
+        "id": 11,
+        "name": "Алматинский метрополитен",
+        "image": "img/metro3.svg",
+        "url": "#"
+    },
+    {
+        "id": 12,
+        "name": "Самарский метрополитен",
+        "image": "img/metro4.svg",
+        "url": "#"
+    },
+    {
+        "id": 13,
+        "name": "Пражский метрополитен",
+        "image": "img/metro5.svg",
+        "url": "#"
+    },
+    {
+        "id": 14,
+        "name": "Тбилисский метрополитен",
+        "image": "img/metro6.svg",
+        "url": "#"
+    }
+]

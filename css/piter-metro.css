@@ -1,0 +1,278 @@
+/* =============================================
+   PITER-METRO СТРАНИЦА - СТИЛИ
+   ============================================= */
+
+/* Hero секция для страницы Петербургского метрополитена */
+.hero--piter {
+    background: linear-gradient(180deg, #1a5c9e 0%, #0d4a7a 100%);
+}
+
+.hero--piter .hero__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.hero--piter .hero__content {
+    flex: 1;
+    max-width: 700px;
+}
+
+.hero--piter .hero__logo {
+    flex-shrink: 0;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.hero--piter .hero__logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* =============================================
+   ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ
+   ============================================= */
+.piter-section {
+    padding: 80px 0;
+}
+
+.piter-section__container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2vw;
+}
+
+.piter-section__image {
+    flex-shrink: 0;
+    width: 48%;
+}
+
+.piter-section__image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.piter-section__image img:hover {
+    transform: scale(1.02);
+}
+
+.piter-section__caption {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #666;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.piter-section__text {
+    width: 48%;
+}
+
+.piter-section__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 130%;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.piter-section__paragraph {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    margin-bottom: 16px;
+}
+
+.piter-section__paragraph:last-child {
+    margin-bottom: 0;
+}
+
+/* =============================================
+   БЕЛАЯ СЕКЦИЯ (светлый фон, тёмный текст)
+   ============================================= */
+.piter-section--white {
+    background-color: #ffffff;
+}
+
+.piter-section--white .piter-section__title {
+    color: #1a5c9e;
+}
+
+.piter-section--white .piter-section__paragraph {
+    color: #333333;
+}
+
+.piter-section--white .piter-section__caption {
+    color: #666666;
+}
+
+/* =============================================
+   СИНЯЯ СЕКЦИЯ (тёмный фон, светлый текст)
+   ============================================= */
+.piter-section--blue {
+    background-color: #1a5c9e;
+}
+
+.piter-section--blue .piter-section__title {
+    color: #ffffff;
+}
+
+.piter-section--blue .piter-section__paragraph {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.piter-section--blue .piter-section__caption {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* =============================================
+   СЕКЦИЯ С ДВУМЯ ТЕКСТОВЫМИ БЛОКАМИ
+   ============================================= */
+.piter-section--double-text .piter-section__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.piter-section--double-text .piter-section__text-block {
+    width: 48%;
+}
+
+.piter-section--double-text .piter-section__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.piter-section--double-text .piter-section__paragraph {
+    font-size: 15px;
+}
+
+/* =============================================
+   АДАПТАЦИЯ
+   ============================================= */
+@media (max-width: 992px) {
+    .piter-section__container {
+        gap: 40px;
+    }
+
+    .piter-section__image,
+    .piter-section__text {
+        width: 48%;
+    }
+
+    .piter-section--double-text .piter-section__text-block {
+        width: 48%;
+    }
+
+    .hero--piter .hero__logo {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero--piter .hero__container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero--piter .hero__content {
+        max-width: 100%;
+    }
+
+    .hero--piter .hero__logo {
+        width: 180px;
+        height: 180px;
+        margin-top: 20px;
+        order: -1;
+    }
+
+    .piter-section {
+        padding: 50px 0;
+    }
+
+    .piter-section__container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 4vw;
+    }
+
+    .piter-section__image,
+    .piter-section__text {
+        width: 100%;
+    }
+
+    .piter-section__image {
+        order: 1;
+    }
+
+    /* Для синих секций меняем порядок: картинка сверху */
+    .piter-section--blue .piter-section__container {
+        flex-direction: column;
+    }
+
+    .piter-section--blue .piter-section__image {
+        order: 1;
+    }
+
+    .piter-section--blue .piter-section__text {
+        order: 2;
+    }
+
+    .piter-section__title {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .piter-section__paragraph {
+        font-size: 14px;
+        line-height: 150%;
+    }
+
+    .piter-section--double-text .piter-section__container {
+        flex-direction: column;
+    }
+
+    .piter-section--double-text .piter-section__text-block {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .piter-section {
+        padding: 40px 0;
+    }
+
+    .piter-section__title {
+        font-size: 18px;
+    }
+
+    .piter-section__paragraph {
+        font-size: 13px;
+    }
+
+    .hero--piter .hero__logo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .hero--piter .hero__title {
+        font-size: 28px;
+    }
+
+    .hero--piter .hero__subtitle {
+        font-size: 14px;
+    }
+}

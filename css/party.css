@@ -1,0 +1,127 @@
+/* Секция Участники */
+.participants {
+    background: #f5f7fa;
+    padding: 60px 0 80px;
+}
+
+/* Секция Метрополитены */
+.metro-section {
+    margin-bottom: 80px;
+}
+
+/* Секция Предприятия */
+.predpriyatiya-section {
+    margin-bottom: 40px;
+}
+
+/* Сетка для метрополитенов и предприятий */
+.metro-grid,
+.predpriyatiya-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+    margin-top: 40px;
+}
+
+/* Айтем метрополитена/предприятия - ссылка */
+.metro-item,
+.predpriyatiya-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s;
+}
+
+.metro-item:hover,
+.predpriyatiya-item:hover {
+    transform: scale(1.05);
+}
+
+.metro-item__image,
+.predpriyatiya-item__image {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.metro-item__image img,
+.predpriyatiya-item__image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.metro-item__name,
+.predpriyatiya-item__name {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #333333;
+    text-align: center;
+}
+
+/* Адаптация */
+@media (max-width: 1200px) {
+    .metro-grid,
+    .predpriyatiya-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .metro-grid,
+    .predpriyatiya-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .participants {
+        padding: 40px 0 60px;
+    }
+
+    .metro-section {
+        margin-bottom: 60px;
+    }
+
+    .metro-grid,
+    .predpriyatiya-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 20px;
+    }
+
+    .metro-item__image,
+    .predpriyatiya-item__image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .metro-item__name,
+    .predpriyatiya-item__name {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metro-grid,
+    .predpriyatiya-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metro-item__image,
+    .predpriyatiya-item__image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .metro-item__name,
+    .predpriyatiya-item__name {
+        font-size: 14px;
+    }
+}

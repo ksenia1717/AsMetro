@@ -1,0 +1,350 @@
+/* Секция Коллектив */
+.team {
+    background: #ffffff;
+    padding: 60px 0 80px;
+}
+
+.team__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2vw;
+}
+
+/* Главный директор */
+.team__main {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.team__main-photo {
+    flex-shrink: 0;
+    width: 200px;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.team__main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team__main-info {
+    flex: 1;
+}
+
+.team__main-name {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    color: #1a5c9e;
+    margin-bottom: 20px;
+}
+
+.team__main-list {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+}
+
+.team__main-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    color: #333333;
+}
+
+.team__main-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #1a5c9e;
+}
+
+.team__main-list--dots li::before {
+    content: '•';
+}
+
+.team__main-section {
+    margin-bottom: 24px;
+}
+
+.team__main-section-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+    color: #1a5c9e;
+    margin-bottom: 16px;
+}
+
+.team__main-text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: #333333;
+    margin-bottom: 12px;
+}
+
+/* Слайдер */
+.slider-container {
+    margin-top: 40px;
+}
+
+.slider {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 10px;
+}
+
+.slider::-webkit-scrollbar {
+    display: block;
+}
+
+.slider > * {
+    scroll-snap-align: center;
+}
+
+.slider__link {
+    display: block;
+    flex-shrink: 0;
+}
+
+.slider__item {
+    position: relative;
+    width: 230px;
+    height: 430px;
+    background: #1a5c9e;
+    border-radius: 12px;
+    padding: 24px 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.slider__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.slider__photo {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: #ffffff;
+}
+
+.slider__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider__name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.slider__position {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+}
+
+.slider__contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slider__contact li {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 150%;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 4px;
+}
+
+/* Секция Основные задачи */
+.tasks {
+    background: #f5f7fa;
+    padding: 60px 0 80px;
+}
+
+.tasks__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2vw;
+}
+
+.tasks__content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tasks__text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+.tasks__list {
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+}
+
+.tasks__list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: #333333;
+}
+
+.tasks__list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #1a5c9e;
+}
+
+/* Секция База знаний */
+.knowledge {
+    background: #ffffff;
+    padding: 60px 0 80px;
+}
+
+.knowledge__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2vw;
+}
+
+.knowledge__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 1000px;
+}
+
+.knowledge__item {
+    margin-bottom: 12px;
+}
+
+.knowledge__link {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: #1a5c9e;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.knowledge__link:hover {
+    color: #0d3a5c;
+}
+
+/* Адаптация */
+@media (max-width: 992px) {
+    .team__main {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .team__main-photo {
+        width: 180px;
+        height: 230px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .team {
+        padding: 40px 0 50px;
+    }
+
+    .team__main-photo {
+        width: 160px;
+        height: 200px;
+    }
+
+    .team__main-name {
+        font-size: 22px;
+    }
+
+    .team__main-section-title {
+        font-size: 18px;
+    }
+
+    .team__main-text,
+    .team__main-list li {
+        font-size: 14px;
+    }
+
+    .slider__item {
+        width: 240px;
+    }
+
+    .tasks,
+    .knowledge {
+        padding: 40px 0 50px;
+    }
+
+    .tasks__text,
+    .tasks__list li,
+    .knowledge__link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 24px;
+    }
+
+    .team__main-photo {
+        width: 140px;
+        height: 180px;
+    }
+
+    .slider__item {
+        width: 220px;
+        padding: 20px 16px;
+    }
+
+    .slider__photo {
+        height: 160px;
+    }
+
+    .slider__name {
+        font-size: 15px;
+    }
+
+    .slider__position {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "ООО \"НПФ КОМАГ-Б\"",
+        "image": "img/predp1.svg",
+        "url": "#"
+    },
+    {
+        "id": 2,
+        "name": "\"ЛЕНМЕТРОГИПРОТРАНС\"",
+        "image": "img/predp2.svg",
+        "url": "#"
+    },
+    {
+        "id": 3,
+        "name": "ООО \"1520 (Сигнал)\"",
+        "image": "img/predp3.svg",
+        "url": "#"
+    },
+    {
+        "id": 4,
+        "name": "Эс-сервис",
+        "image": "img/predp4.svg",
+        "url": "#"
+    },
+    {
+        "id": 5,
+        "name": "Метровагонмаш",
+        "image": "img/predp1.svg",
+        "url": "#"
+    },
+    {
+        "id": 6,
+        "name": "ЧАО \"Плутон\"",
+        "image": "img/predp2.svg",
+        "url": "#"
+    },
+    {
+        "id": 7,
+        "name": "НИИ ТМ",
+        "image": "img/predp3.svg",
+        "url": "#"
+    },
+    {
+        "id": 8,
+        "name": "Электротранспорт Санкт-Петербурга",
+        "image": "img/predp4.svg",
+        "url": "#"
+    },
+    {
+        "id": 9,
+        "name": "Крюковский вагоностроительный завод",
+        "image": "img/predp1.svg",
+        "url": "#"
+    },
+    {
+        "id": 10,
+        "name": "\"ВЕНТПРОМ\"",
+        "image": "img/predp2.svg",
+        "url": "#"
+    },
+    {
+        "id": 11,
+        "name": "ООО \"НПФ КОМАГ-Б\"",
+        "image": "img/predp3.svg",
+        "url": "#"
+    },
+    {
+        "id": 12,
+        "name": "ЦТИ",
+        "image": "img/predp4.svg",
+        "url": "#"
+    },
+    {
+        "id": 13,
+        "name": "\"НИИЭФА-ЭНЕРГО\"",
+        "image": "img/predp1.svg",
+        "url": "#"
+    }
+]
