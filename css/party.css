@@ -1,20 +1,20 @@
-/* Секция Участники */
+
 .participants {
     background: #f5f7fa;
     padding: 60px 0 80px;
 }
 
-/* Секция Метрополитены */
+
 .metro-section {
     margin-bottom: 80px;
 }
 
-/* Секция Предприятия */
+
 .predpriyatiya-section {
     margin-bottom: 40px;
 }
 
-/* Сетка для метрополитенов и предприятий */
+
 .metro-grid,
 .predpriyatiya-grid {
     display: grid;
@@ -23,7 +23,7 @@
     margin-top: 40px;
 }
 
-/* Айтем метрополитена/предприятия - ссылка */
+
 .metro-item,
 .predpriyatiya-item {
     display: flex;

@@ -1,10 +1,4 @@
-/* =============================================
-   INTERNATIONAL-ACTIVITIES СТРАНИЦА - СТИЛИ
-   ============================================= */
 
-/* =============================================
-   ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ
-   ============================================= */
 .int-section {
     padding: 80px 0;
 }
@@ -15,17 +9,6 @@
     padding: 0 2vw;
 }
 
-.int-section__title {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 130%;
-    color: #1a5c9e;
-    margin-bottom: 30px;
-}
-
-.int-section__title--white {
-    color: #ffffff;
-}
 
 .int-section__text {
     font-weight: 400;

@@ -1,4 +1,4 @@
-/* Reset and base styles  */
+
 * {
 	padding: 0px;
 	margin: 0px;
@@ -11,7 +11,7 @@
 	box-sizing: border-box;
 }
 
-/* Links */
+
 
 a, a:link, a:visited  {
     text-decoration: none;
@@ -21,7 +21,7 @@ a:hover  {
     text-decoration: none;
 }
 
-/* Common */
+
 
 aside, nav, footer, header, section, main {
 	display: block;
@@ -49,7 +49,7 @@ address {
   font-style: normal;
 }
 
-/* Form */
+
 
 input, textarea, button, select {
 	font-family: inherit;

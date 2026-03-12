@@ -1,4 +1,4 @@
-/* Секция Коллектив */
+
 .team {
     background: #ffffff;
     padding: 60px 0 80px;
@@ -10,7 +10,7 @@
     padding: 0 2vw;
 }
 
-/* Главный директор */
+
 .team__main {
     display: flex;
     gap: 40px;

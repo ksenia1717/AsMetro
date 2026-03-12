@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFooter();
     initDropdown();
     loadNews();
+    initNewsPopups();
 });
 
 let currentFilter = 'all';
@@ -103,8 +104,50 @@ function initNewsCardClicks() {
     newsCards.forEach(function(card) {
         card.addEventListener('click', function() {
             const popupId = this.getAttribute('data-popup');
-            console.log('Открытие новости:', popupId);
+            const popup = document.getElementById('news-popup-' + popupId.split('-')[1]);
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         });
+    });
+}
+
+function initNewsPopups() {
+    const newsPopups = document.querySelectorAll('.news-popup');
+
+    // Закрытие по кнопке
+    const closeButtons = document.querySelectorAll('.news-popup__close');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const popupId = button.getAttribute('data-popup-close');
+            const popup = document.getElementById('news-popup-' + popupId.split('-')[1]);
+            if (popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Закрытие по клику вне контента
+    newsPopups.forEach(function(popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const activePopup = document.querySelector('.news-popup.active');
+            if (activePopup) {
+                activePopup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     });
 }
 
