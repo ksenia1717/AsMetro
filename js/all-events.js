@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFooter();
     initDropdown();
     loadEvents();
+    initEventsPopups();
 });
 
 let currentFilter = 'all';
@@ -67,8 +68,17 @@ async function loadEvents() {
 }
 
 function createEventsCard(event) {
+    const datePart = (event.datetime || '').split(' ')[0] || '';
+    const dateParts = datePart.split('.');
+    const dayMonth = dateParts.length >= 2 ? `${dateParts[0]}.${dateParts[1]}` : datePart;
+    const year = dateParts.length >= 3 ? dateParts[2] : (event.year || '');
+
     return `
         <div class="events-card" data-popup="${event.popupId}">
+            <div class="events-card__badge">
+                <p class="events-card__badge-day">${dayMonth}</p>
+                <p class="events-card__badge-year">${year}</p>
+            </div>
             <h3 class="events-card__title">${event.title}</h3>
             <div class="events-card__footer">
                 <p class="events-card__date">${event.datetime}</p>
@@ -106,8 +116,50 @@ function initEventsCardClicks() {
     eventsCards.forEach(function(card) {
         card.addEventListener('click', function() {
             const popupId = this.getAttribute('data-popup');
-            console.log('Открытие мероприятия:', popupId);
+            const popup = document.getElementById('events-popup-' + popupId.split('-')[1]);
+            if (popup) {
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         });
+    });
+}
+
+function initEventsPopups() {
+    const eventsPopups = document.querySelectorAll('.events-popup');
+
+    // Закрытие по кнопке
+    const closeButtons = document.querySelectorAll('.events-popup__close');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const popupId = button.getAttribute('data-popup-close');
+            const popup = document.getElementById('events-popup-' + popupId.split('-')[1]);
+            if (popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Закрытие по клику вне контента
+    eventsPopups.forEach(function(popup) {
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const activePopup = document.querySelector('.events-popup.active');
+            if (activePopup) {
+                activePopup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
     });
 }
 
@@ -127,6 +179,14 @@ async function loadHeader() {
             if (headerBlock) {
                 headerBlock.appendChild(headerContent);
             }
+        }
+
+        if (typeof initHeaderDropdown === 'function') {
+            initHeaderDropdown();
+        }
+
+        if (typeof initMobileHeader === 'function') {
+            initMobileHeader();
         }
     } catch (error) {
         console.error('Ошибка при загрузке header:', error);

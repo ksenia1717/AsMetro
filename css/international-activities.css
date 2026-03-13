@@ -1,10 +1,4 @@
-/* =============================================
-   INTERNATIONAL-ACTIVITIES СТРАНИЦА - СТИЛИ
-   ============================================= */
 
-/* =============================================
-   ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ
-   ============================================= */
 .int-section {
     padding: 80px 0;
 }
@@ -15,16 +9,9 @@
     padding: 0 2vw;
 }
 
-.int-section__title {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 130%;
-    color: #1a5c9e;
-    margin-bottom: 30px;
-}
-
-.int-section__title--white {
-    color: #ffffff;
+.section-title--white{
+    color: #f0f4f8;
+    border-bottom: 2px solid #f0f4f8;
 }
 
 .int-section__text {
@@ -130,57 +117,59 @@
 /* =============================================
    АДАПТАЦИЯ
    ============================================= */
-@media (max-width: 992px) {
-    .magazines-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .int-section {
-        padding: 50px 0;
-    }
-
-    .int-section__title {
-        font-size: 20px;
+@media (max-width: 430px) {
+    .section-title {
+        font-size: 22px;
         margin-bottom: 20px;
+    }
+
+    .int-section {
+        padding: 40px 0 48px;
+    }
+
+    .int-section__container {
+        padding: 0 16px;
     }
 
     .int-section__text,
     .int-section__link {
         font-size: 14px;
-    }
-
-    .int-section__paragraph {
-        font-size: 14px;
         line-height: 150%;
-    }
-
-    .magazines-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .magazine-item {
-        border-radius: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    .int-section__container {
-        padding: 0 4vw;
-    }
-
-    .int-section__title {
-        font-size: 18px;
-    }
-
-    .magazines-grid {
-        grid-template-columns: 1fr;
     }
 
     .int-section__paragraph {
         font-size: 13px;
+        line-height: 150%;
+        margin-bottom: 12px;
+    }
+
+    .int-section--magazines {
+        padding: 32px 0 40px;
+    }
+
+    .magazines-grid {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 12px;
+        padding: 0 16px 6px;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .magazines-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .magazines-grid > * {
+        scroll-snap-align: start;
+    }
+
+    .magazine-item {
+        flex: 0 0 260px;
+        border-radius: 12px;
     }
 }
 
@@ -300,36 +289,38 @@
 }
 
 /* Адаптация попапа */
-@media (max-width: 768px) {
+@media (max-width: 430px) {
     .magazine-popup__content {
-        padding: 30px;
-        max-width: 95vw;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        padding: 64px 16px 20px;
+    }
+
+    .magazine-popup__close {
+        top: 16px;
+        right: 12px;
     }
 
     .magazine-popup__close img {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .magazine-popup__slide {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .magazine-popup__controls {
+        bottom: 16px;
+        right: 12px;
     }
 
     .magazine-popup__nav img {
         width: 28px;
         height: 28px;
-    }
-
-    .magazine-popup__controls {
-        bottom: 15px;
-        right: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .magazine-popup__content {
-        padding: 20px;
-        max-width: 98vw;
-    }
-
-    .magazine-popup__nav img {
-        width: 24px;
-        height: 24px;
     }
 }

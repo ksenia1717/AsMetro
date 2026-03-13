@@ -49,6 +49,14 @@ async function loadHeader() {
                 headerBlock.appendChild(headerContent);
             }
         }
+
+        if (typeof initHeaderDropdown === 'function') {
+            initHeaderDropdown();
+        }
+
+        if (typeof initMobileHeader === 'function') {
+            initMobileHeader();
+        }
     } catch (error) {
         console.error('Ошибка при загрузке header:', error);
     }

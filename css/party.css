@@ -1,20 +1,20 @@
-/* Секция Участники */
+
 .participants {
     background: #f5f7fa;
     padding: 60px 0 80px;
 }
 
-/* Секция Метрополитены */
+
 .metro-section {
     margin-bottom: 80px;
 }
 
-/* Секция Предприятия */
+
 .predpriyatiya-section {
     margin-bottom: 40px;
 }
 
-/* Сетка для метрополитенов и предприятий */
+
 .metro-grid,
 .predpriyatiya-grid {
     display: grid;
@@ -23,7 +23,7 @@
     margin-top: 40px;
 }
 
-/* Айтем метрополитена/предприятия - ссылка */
+
 .metro-item,
 .predpriyatiya-item {
     display: flex;
@@ -67,61 +67,40 @@
 }
 
 /* Адаптация */
-@media (max-width: 1200px) {
-    .metro-grid,
-    .predpriyatiya-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 992px) {
-    .metro-grid,
-    .predpriyatiya-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 430px) {
     .participants {
-        padding: 40px 0 60px;
+        padding: 40px 16px;
     }
 
     .metro-section {
-        margin-bottom: 60px;
+        margin-bottom: 44px;
+    }
+
+    .predpriyatiya-section {
+        margin-bottom: 24px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
     }
 
     .metro-grid,
     .predpriyatiya-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px 20px;
+        gap: 18px 14px;
+        margin-top: 24px;
     }
 
     .metro-item__image,
     .predpriyatiya-item__image {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
+        margin-bottom: 0;
     }
 
     .metro-item__name,
     .predpriyatiya-item__name {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    .metro-grid,
-    .predpriyatiya-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .metro-item__image,
-    .predpriyatiya-item__image {
-        width: 120px;
-        height: 120px;
-    }
-
-    .metro-item__name,
-    .predpriyatiya-item__name {
-        font-size: 14px;
+        /* display: none; */
     }
 }
