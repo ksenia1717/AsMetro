@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0f1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e1e9f2;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .login-container {
+            background: #1e2533;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #2e3a4b;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Переливающаяся полоска с RGB-цветами без прозрачных краёв */
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            right: -100%;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                rgb(255, 0, 0),      /* Красный */
+                rgb(255, 255, 0),     /* Жёлтый */
+                rgb(0, 255, 0),       /* Зелёный */
+                rgb(0, 255, 255),     /* Голубой */
+                rgb(0, 0, 255),       /* Синий */
+                rgb(255, 0, 255),     /* Пурпурный */
+                rgb(255, 0, 0)        /* Снова красный для плавности */
+            );
+            background-size: 200% 100%;
+            animation: shimmer 10s infinite linear;
+            opacity: 0.9;
+            filter: blur(0.5px);
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #e1e9f2;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7e91a8;
+            margin-bottom: 32px;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #7e91a8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 40px 14px 14px;
+            border: 1px solid #2e3a4b;
+            border-radius: 12px;
+            font-size: 15px;
+            background: #2a3342;
+            color: #e1e9f2;
+            transition: all 0.2s ease;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #71a5e0;
+            box-shadow: 0 0 0 3px rgba(113, 165, 224, 0.2);
+            background: #2a3342;
+        }
+
+        input::placeholder {
+            color: #5a6f88;
+            opacity: 0.7;
+        }
+
+        /* Иконка глаза */
+        .toggle-visibility {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #7e91a8;
+            padding: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .toggle-visibility:hover {
+            color: #71a5e0;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .toggle-visibility:active {
+            color: #82b4f0;
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .error-message {
+            color: #f77c7c;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+            align-items: center;
+            gap: 6px;
+            background: #3d2e38;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid #f77c7c;
+            animation: shake 0.4s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-4px); }
+            40%, 80% { transform: translateX(4px); }
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #71a5e0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 16px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-btn:hover {
+            background: #82b4f0;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+        }
+
+        .login-btn.loading .loading {
+            display: inline-block;
+        }
+
+        .login-btn.loading .btn-text {
+            display: none;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .auto-login-status {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            display: none;
+            background: #2a3342;
+            color: #7e91a8;
+            border: 1px solid #2e3a4b;
+            animation: slideDown 0.3s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auto-login-status.checking {
+            display: block;
+            background: #1f2f42;
+            color: #71a5e0;
+            border-color: #71a5e0;
+        }
+
+        .auto-login-status.failed {
+            display: block;
+            background: #3d2e38;
+            color: #f77c7c;
+            border-color: #f77c7c;
+        }
+
+        .divider {
+            height: 1px;
+            background: #2e3a4b;
+            margin: 32px 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #7e91a8;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>🔐 fals_CMS</h1>
+        <p class="subtitle">Введите секретный ключ для доступа к панели</p>
+
+        <div class="auto-login-status" id="autoLoginStatus"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="secretKey">Секретный ключ</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="password" 
+                        id="secretKey" 
+                        name="secret" 
+                        required 
+                        placeholder="••••••••••••"
+                        autocomplete="current-password"
+                    >
+                    <button type="button" class="toggle-visibility" id="toggleVisibility">👁</button>
+                </div>
+                <div class="error-message" id="errorMessage">
+                    <span>❌</span>
+                    <span id="errorText">Неверный секретный ключ</span>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn" id="loginBtn">
+                <span class="btn-text">Войти в систему</span>
+                <span class="loading">
+                    <span class="spinner"></span>
+                </span>
+            </button>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="footer">
+            Панель управления контентом
+        </div>
+    </div>
+
+    <script>
+        // Константы
+        const AUTH_ENDPOINT = '/auth';
+        const ADMIN_PATH = '/admin';
+        const STORAGE_KEY = 'admin_secret_key';
+        const STORAGE_TIMESTAMP_KEY = 'admin_secret_timestamp';
+        const SESSION_DURATION = 30 * 60 * 1000; // 30 минут
+
+        // Элементы DOM
+        const loginForm = document.getElementById('loginForm');
+        const secretKeyInput = document.getElementById('secretKey');
+        const toggleVisibility = document.getElementById('toggleVisibility');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const loginBtn = document.getElementById('loginBtn');
+        const autoLoginStatus = document.getElementById('autoLoginStatus');
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAutoLogin();
+        });
+
+        // === Показ пароля при зажатии иконки глаза ===
+        let pressTimer;
+
+        toggleVisibility.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            pressTimer = setTimeout(() => {
+                secretKeyInput.type = 'text';
+                toggleVisibility.textContent = '🔒';
+            }, 100);
+        });
+
+        toggleVisibility.addEventListener('mouseup', () => {
+            clearTimeout(pressTimer);
+            secretKeyInput.type = 'password';
+            toggleVisibility.textContent = '👁';
+        });
+
+        toggleVisibility.addEventListener('mouseleave', () => {
+            clearTimeout(pressTimer);
+            secretKeyInput.type = 'password';
+            toggleVisibility.textContent = '👁';
+        });
+
+        // Для touch-устройств
+        toggleVisibility.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            pressTimer = setTimeout(() => {
+                secretKeyInput.type = 'text';
+                toggleVisibility.textContent = '🔒';
+            }, 100);
+        });
+
+        toggleVisibility.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            clearTimeout(pressTimer);
+            secretKeyInput.type = 'password';
+            toggleVisibility.textContent = '👁';
+        });
+
+        toggleVisibility.addEventListener('touchcancel', () => {
+            clearTimeout(pressTimer);
+            secretKeyInput.type = 'password';
+            toggleVisibility.textContent = '👁';
+        });
+
+        // === Проверка автологина при загрузке ===
+        async function checkAutoLogin() {
+            const savedSecret = localStorage.getItem(STORAGE_KEY);
+            const savedTimestamp = localStorage.getItem(STORAGE_TIMESTAMP_KEY);
+
+            if (!savedSecret || !savedTimestamp) {
+                return;
+            }
+
+            const now = Date.now();
+            if (now - parseInt(savedTimestamp) > SESSION_DURATION) {
+                clearStoredCredentials();
+                return;
+            }
+
+            autoLoginStatus.textContent = 'Проверка сохранённого ключа...';
+            autoLoginStatus.className = 'auto-login-status checking';
+
+            try {
+                const formData = new FormData();
+                formData.append('secret', savedSecret);
+
+                const response = await fetch(AUTH_ENDPOINT, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.text();
+
+                if (result.trim().toLowerCase() === 'confirmed') {
+                    autoLoginStatus.textContent = 'Автологин успешен! Перенаправление...';
+                    setTimeout(() => {
+                        window.location.href = `${ADMIN_PATH}?secret=${encodeURIComponent(savedSecret)}`;
+                    }, 500);
+                } else {
+                    throw new Error('Authentication failed');
+                }
+            } catch (error) {
+                clearStoredCredentials();
+                autoLoginStatus.textContent = 'Автологин не удался. Введите ключ заново.';
+                autoLoginStatus.className = 'auto-login-status failed';
+                
+                setTimeout(() => {
+                    autoLoginStatus.className = 'auto-login-status';
+                }, 3000);
+            }
+        }
+
+        // === Обработка формы входа ===
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const secret = secretKeyInput.value.trim();
+            
+            if (!secret) {
+                showError('Введите секретный ключ');
+                return;
+            }
+
+            setLoading(true);
+            hideError();
+
+            try {
+                const formData = new FormData();
+                formData.append('secret', secret);
+
+                const response = await fetch(AUTH_ENDPOINT, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.text();
+
+                if (result.trim().toLowerCase() === 'confirmed') {
+                    saveCredentials(secret);
+                    window.location.href = `${ADMIN_PATH}?secret=${encodeURIComponent(secret)}`;
+                } else {
+                    showError('Неверный секретный ключ');
+                    secretKeyInput.value = '';
+                    secretKeyInput.focus();
+                }
+            } catch (error) {
+                console.error('Auth error:', error);
+                showError('Ошибка подключения к серверу');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // === Сохранение учётных данных ===
+        function saveCredentials(secret) {
+            localStorage.setItem(STORAGE_KEY, secret);
+            localStorage.setItem(STORAGE_TIMESTAMP_KEY, Date.now().toString());
+        }
+
+        // === Очистка учётных данных ===
+        function clearStoredCredentials() {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STORAGE_TIMESTAMP_KEY);
+        }
+
+        // === Управление состоянием кнопки ===
+        function setLoading(isLoading) {
+            loginBtn.disabled = isLoading;
+            loginBtn.classList.toggle('loading', isLoading);
+            secretKeyInput.disabled = isLoading;
+        }
+
+        // === Управление ошибками ===
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.add('show');
+            
+            // Анимация тряски для инпута
+            secretKeyInput.style.animation = 'shake 0.4s ease-out';
+            setTimeout(() => {
+                secretKeyInput.style.animation = '';
+            }, 400);
+        }
+
+        function hideError() {
+            errorMessage.classList.remove('show');
+        }
+
+        // === Enter для отправки ===
+        secretKeyInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                loginForm.dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>
